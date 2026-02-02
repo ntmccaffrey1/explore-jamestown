@@ -1,0 +1,19 @@
+.load-more {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.load-more svg {
+    width: 1em;
+    height: 1em;
+}
+
+.load-more .btn {
+    gap: .5rem;
+}
+
+.load-more button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

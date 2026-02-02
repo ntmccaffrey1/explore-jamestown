@@ -1,0 +1,72 @@
+.account-menu {
+  position: relative;
+}
+
+.account-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: max-content;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px dashed var(--border-color);
+  padding: 1.5rem;
+  z-index: 100;
+}
+
+.account-menu-content {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.account-items {
+    display: flex;
+    gap: .5rem;
+}
+
+.account-items .btn {
+  flex: 1;
+}
+
+.account-header .name {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.account-header .email {
+    font-family: var(--font-alpina-typewriter), sans-serif;
+    opacity: .7;
+}
+
+.avatar-sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-alpina-typewriter), sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--green);
+  gap: .3rem;
+  font-weight: 700;
+}
+
+.account-items .logout svg {
+    stroke-width: 0;
+}
+
+.account-menu-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

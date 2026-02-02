@@ -1,0 +1,21 @@
+.swiper {
+    overflow: unset !important;
+    padding-top: 1rem;
+}
+
+.swiper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.swiper .col-2 h3 {
+    display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

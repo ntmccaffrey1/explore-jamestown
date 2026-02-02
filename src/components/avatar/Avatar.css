@@ -1,0 +1,28 @@
+.avatar {
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar img {
+    object-fit: cover;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .3rem;
+}
+
+.profile-info .avatar {
+    width: 5rem;
+    height: 5rem;
+}
+
+.profile-info .avatar img {
+    width: 5rem;
+    height: 5rem;
+}

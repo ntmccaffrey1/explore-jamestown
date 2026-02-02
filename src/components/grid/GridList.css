@@ -1,0 +1,5 @@
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 1rem + 1.5vw, 3rem);
+}

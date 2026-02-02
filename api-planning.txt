@@ -1,0 +1,63 @@
+1. Main Route
+
+GET / => Homepage
+Purpose: Return homepage content (mix of events, things to do, places to stay, etc.) pulled scraped data in MongoDB.
+Response: JSON with arrays of featured items.
+
+2. View Routes
+
+GET /events => Events Page
+Purpose: Fetch all events happening in Jamestown.
+Response: List of events with title, date, location, description, image, website, etc.
+
+GET /lodging => Lodging
+Purpose: Show lodging (hotels, inns, B&Bs, etc).
+Response: List of places with address, amenities, price range, location, etc.
+
+GET /activities => Activities Page
+Purpose: Return activities (beaches, parks, restaurants, hiking, etc).
+Response: List with actiivites.
+
+GET /dining => Dining Page
+Purpose: Return dining restaurants.
+Response: List with dining.
+
+3. Authentication Routes
+
+Users can register/login to save events, places, things to do, to their account.
+
+GET /login => Login Form Page
+Purpose: Users can login to the site.
+Response: Page with login form.
+
+POST /login
+Body: { "email": "user@example.com", "password": "password123" }
+Response: 200 OK with JWT cookie.
+
+POST /logout
+Response: 200 OK clears JWT cookie.
+
+4. Profile Routes
+
+For logged-in users only.
+
+GET /account
+Auth required.
+Purpose: Fetch profile and saved items.
+Response: { user: {}, savedEvents: [], savedPlaces: [], savedThings: [] }.
+
+5. Routes for scraping and APIs with a cron job
+
+For scraping data:
+
+GET /scrape/events
+Purpose: Trigger a scrape for events with a cron job.
+
+GET /scrape/lodging
+Purpose: Trigger scrape of lodging with a cron job.
+
+GET /scrape/dining
+Purpose: Trigger scrape of dining with a cron job.
+
+GET /scrape/activities
+Purpose: Trigger scrape of activities with a cron job.

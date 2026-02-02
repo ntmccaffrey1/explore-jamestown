@@ -1,0 +1,36 @@
+.favorite-btn {
+    cursor: pointer;
+    background: none;
+    z-index: 1;
+    border: none;
+    border-radius: 9999px;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 1.1rem;
+    transition: transform .15s;
+    display: flex;
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+}
+
+.favorite-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+  fill: rgba(0,0,0,.2);
+  stroke: #fff;
+  stroke-width: 2;
+  overflow: visible;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.favorite-btn.is-active svg {
+  fill: #fff;
+}

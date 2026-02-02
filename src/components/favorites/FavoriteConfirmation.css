@@ -1,0 +1,62 @@
+.fav-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.fav-confirm {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px dashed var(--border-color);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: .75rem;
+  background: #fff;
+  border-radius: .3rem;
+  animation: favIn 0.25s ease-out;
+  width: 20rem;
+}
+
+@keyframes favIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1rem) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.fav-confirm-img {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: .3rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.fav-confirm-text p.fav-title {
+    font-weight: bold;
+    /* font-family: var(--font-alpina-condensed); */
+    font-weight: 500;
+    font-size: .85rem;
+    margin: 0 0 .25rem 0;
+    font-size: 1.1rem;
+    line-height: 1;
+      display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.fav-confirm-text p.fav-p {
+    margin: 0;
+    font-size: .85rem;
+    opacity: .7;
+}

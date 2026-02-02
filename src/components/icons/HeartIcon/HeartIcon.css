@@ -1,0 +1,5 @@
+.heart {
+    stroke: currentColor;
+    stroke-width: 2px;
+    fill: transparent;
+}

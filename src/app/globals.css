@@ -1,0 +1,273 @@
+:root {
+  --background: #ffffff;
+  --green: #3C422E;
+  --yellow: #D1E030;
+  --off-white: #f9fbf9;
+  --border-color: #3c422e3b;
+  --container-large: 88.5rem;
+
+  --h1-font-size: clamp(3.3rem, 1rem + 6.15vw, 5rem);
+	--h2-font-size: clamp(2.65rem, 1rem + 3.2vw, 3.8rem);
+	--h3-font-size: clamp(1.8rem, 1rem + 1.5vw, 2.5rem);
+	--h4-font-size: clamp(1.2rem, 1rem + 1.2vw, 1.8rem);
+	--h5-font-size: clamp(1rem, 0.9rem + 0.9vw, 1.5rem);
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: calc(0.625rem + 0.41666666666666663vw);
+}
+
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: calc(0.625rem + 0.41666666666666674vw);
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    html {
+        font-size: calc(0.8126951092611863rem + 0.20811654526534862vw);
+    }
+}
+
+@media screen and (max-width: 479px) {
+    html {
+        font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
+    }
+}
+
+body {
+  background: var(--background);
+  color: var(--green);
+  font-family: var(--font-alpina-condensed), sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  font-size: 1rem;
+}
+
+body.nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+  line-height: 1;
+}
+
+p {
+  font-family: var(--font-alpina-typewriter), sans-serif;
+  line-height: 1.25;
+}
+
+ul {
+  font-family: var(--font-alpina-typewriter), sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+header .logo {
+    max-width: 9rem;
+    height: auto;
+}
+
+.container {
+  max-width: var(--container-large) !important;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+img {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: var(--green);
+  height: 2.5rem;
+  background: transparent;
+  gap: .35rem;
+  border: 1px dashed var(--border-color);
+  align-items: center;
+  border-radius: .3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-family: var(--font-alpina-typewriter);
+  font-weight: 700;
+  transition: .25s all;
+}
+
+.btn:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.btn svg {
+  width: 1em;
+  height: 1em;
+}
+
+.btn.sign-in svg {
+  fill: var(--green);
+}
+
+.btn.sign-in:hover svg {
+  fill: #ffffff;
+}
+
+.btn-small {
+  height: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: .85rem
+}
+
+.padding-section {
+    padding-top: clamp(3.125rem, 8vw, 5rem);
+    padding-bottom: clamp(3.125rem, 8vw, 5rem);
+}
+
+.fixed {
+  position: fixed;
+}
+
+.container-wrapper {
+  margin-top: clamp(7rem, 1rem + 10vw, 10rem);
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* =============================
+   Navigation
+============================= */
+
+header {
+  width: 100%;
+  background: var(--background);
+  top: 0;
+  z-index: 102;
+  padding: .25rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+header.nav-open {
+  z-index: 102;
+}
+
+.site-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  position: relative;
+}
+
+.nav-left a {
+  display: flex;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header .container {
+  max-width: 100% !important;
+  position: relative;
+}
+
+.main-nav {
+  gap: .5rem;
+  font-family: var(--font-alpina-typewriter);
+  font-weight: 600;
+}
+
+@media screen and (max-width: 960px) {
+  .main-nav, .account-menu, .sign-in {
+    display: none;
+  }
+}
+
+.nav-right {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: inherit;
+  transition: .3s all;
+  padding: .5rem 1rem;
+}
+
+.main-nav a.nav-link.is-active {
+  background: var(--off-white);
+  border-radius: .3rem;
+}
+
+.main-nav a:hover {
+  background: var(--off-white);
+  border-radius: .3rem;
+}  
+
+.container-wrapper h1 {
+  text-align: center;
+    margin-bottom: 1.5rem;
+}

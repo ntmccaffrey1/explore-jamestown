@@ -1,0 +1,9 @@
+.hero-btn {
+    border-color: #fff;
+    color: #fff;
+}
+
+.hero-btn:hover {
+    background: #fff;
+    color: var(--green);
+}

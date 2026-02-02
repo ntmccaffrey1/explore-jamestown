@@ -1,0 +1,157 @@
+.place-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.modal-img--wrapper {
+  position: relative;
+}
+
+.place-modal img {
+    aspect-ratio: 2 / 1.25;
+    object-position: center center;
+    object-fit: cover;
+    border-radius: .3rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  transition: background 0.3s ease;
+  backdrop-filter: blur(20px);
+}
+
+.modal-img--wrapper {
+    position: relative;
+}
+
+.modal-img--wrapper .favorite-btn {
+    right: unset;
+    left: .75rem;
+}
+
+.modal-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+    gap: .5rem;
+}
+
+.modal-links-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: .5rem;
+}
+
+.modal-links-inner a.btn {
+  flex: 1;
+}
+
+.modal-content--wrapper {
+    padding: 0 1rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: .25rem;
+  right: .25rem;
+  padding: 0;
+  z-index: 10;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: .3rem;
+  color: #fff;
+  width: 1.75rem;
+  height: 1.75rem;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.modal-close svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.modal-close svg * {
+    fill: currentcolor;
+    stroke: currentcolor;
+    stroke-width: 1.5;
+}
+
+/* fade overlay in */
+.modal-overlay.open {
+  background: rgba(0,0,0,0.5);
+}
+
+/* fade overlay out */
+.modal-overlay.closing {
+  background: rgba(0,0,0,0);
+}
+
+.modal-body {
+  background: var(--background);
+  width: 100%;
+  max-width: 36rem;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* slide in */
+.modal-body.open {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* slide out */
+.modal-body.closing {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.bottom-url {
+    border-top: 1px dashed var(--border-color);
+    background: #fff;
+    width: 100%;
+    padding: 1rem;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    margin-top: 1.5rem;
+}
+
+.bottom-url .btn {
+  width: 100%;
+  background: var(--green);
+  color: #fff;
+}
+
+.bottom-url .btn:hover {
+  background: transparent;
+  color: var(--green);
+}  
+
+@media screen and (max-width: 600px) {
+  .modal-body {
+    width: 100%;
+  }  
+}  

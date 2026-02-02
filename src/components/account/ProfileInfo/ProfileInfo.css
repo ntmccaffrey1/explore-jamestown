@@ -1,0 +1,14 @@
+.profile-info {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem;
+    display: flex;
+    max-width: 25rem;
+    background: var(--off-white);
+    border: 1px dashed var(--border-color);
+    border-radius: .75rem;
+    margin: 0 auto;
+    margin-bottom: 2.5rem;
+}

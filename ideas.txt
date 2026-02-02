@@ -1,0 +1,23 @@
+Capstone Project Ideas
+
+Fun Idea
+1. Weekly Skateboard Trick Posting
+   -  The idea of this site would be to post a skateboard trick weekly and users who sign up have the ability to upload videos of themselves doing the
+      trick. Others user's would then like and upvote the video submissions and at the end of the week the user with the most likes/
+      upvotes would win (something). This would generate a leaderboard in which users could see who has the most "points" or maybe what place
+      they are in, based on how many likes or votes they get on their videos. This would utilize the Tricking API and would generate a random
+      trick weekly for user's to create videos and submit them. The weekly trick posting would also be posted with a video showcasing the trick 
+      from a professional or someone else that has done the trick.
+
+More Serious Idea
+2. Custom Headless Custom
+   - The idea would be to build some sort of CMS that would essentially be a page builder. So the admin can create different page types just like
+     a normal web CMS like Wordpress or Drupal would allow. Create dynamic blocks like hero sections, call-to-action's, header, footer, etc. This
+     would require a custom built api to serve content and building out an admin panel in the backend for a logged in user to create different
+     sections on their website.
+
+Sort of Serious Idea
+3. Weather App
+   - Weather dashboard where you can search a city and populate the weather in a custom built UI. This would utilize the OpenWeatherMap API. Have the 
+     ability to save favorite cities and produce the standard daily, 7-day, hourly forecasts and give updates when weather alerts happen. Utilize 
+     different images based on weather and maybe have the ability to customize your own dashboard.

@@ -1,0 +1,17 @@
+.arrow-btn {
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    color: var(--green);
+    border: 1px dashed var(--border-color);
+    border-radius: .3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .25s all;
+}
+
+.arrow-btn svg {
+    height: 1rem;
+    width: 1rem;
+}
