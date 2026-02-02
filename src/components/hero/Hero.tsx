@@ -31,13 +31,7 @@ export default function Hero({
                 <p>{description}</p>
               )}
             </div>
-
-            {ctaLabel && (
-              <HeroBtn
-                label={ctaLabel}
-                onClick={onCtaClick}
-              />
-            )}
+            
           </div>
         </div>
       </div>
