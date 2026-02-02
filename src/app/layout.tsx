@@ -4,6 +4,13 @@ import localFont from "next/font/local";
 import Providers from "@/components/Providers";
 import Footer from "@/components/footer/Footer";
 
+export const metadata = {
+  title: "Explore Jamestown",
+  icons: {
+    icon: "/favicon.png",
+  },
+}
+
 export const alpinaCondensed = localFont({
   src: [
     {

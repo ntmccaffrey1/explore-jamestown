@@ -56,15 +56,17 @@ export default function EventsSwiperClient({
       </Swiper>
 
       {active && (
-        <Modal onClose={() => setActive(null)}>
-          <EventModal
-            event={active}
-            isLoggedIn={isLoggedIn}
-            onClose={() => setActive(null)}
-            onFavoriteToggle={handleFavorite}
-          />
-        </Modal>
-      )}
+  <Modal onClose={() => setActive(null)}>
+    {(requestClose) => (
+      <EventModal
+        event={active}
+        isLoggedIn={isLoggedIn}
+        onClose={requestClose}
+        onFavoriteToggle={handleFavorite}
+      />
+    )}
+  </Modal>
+)}
     </>
   )
 }
