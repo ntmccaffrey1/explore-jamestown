@@ -42,7 +42,6 @@
   gap: .5rem;
   align-items: flex-end;
   width: 100%;
-  color: grey;
 }
 
 .col-3 div {
@@ -55,6 +54,10 @@
   display: flex;
   font-size: .85rem;
 }
+
+.col-3--info p {
+  color: var(--green) !important;
+}  
 
 .button {
   justify-content: flex-end;

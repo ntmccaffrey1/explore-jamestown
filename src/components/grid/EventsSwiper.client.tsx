@@ -32,7 +32,7 @@ export default function EventsSwiperClient({
   return (
     <>
       <Swiper
-        spaceBetween={32}
+        spaceBetween={24}
         slidesPerView="auto"
         grabCursor
         observer

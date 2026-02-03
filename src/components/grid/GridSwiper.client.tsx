@@ -31,7 +31,7 @@ export default function PlacesSwiperClient({
   return (
     <>
       <Swiper
-        spaceBetween={32}
+        spaceBetween={24}
         slidesPerView="auto"
         grabCursor
         observer
@@ -60,8 +60,8 @@ export default function PlacesSwiperClient({
             <PlaceModal
               place={active}
               isLoggedIn={isLoggedIn}
-              onClose={requestClose}          // ✅ animated close
-              onFavoriteToggle={handleFavorite} // ✅ correct fn
+              onClose={requestClose}
+              onFavoriteToggle={handleFavorite}
             />
           )}
         </Modal>
