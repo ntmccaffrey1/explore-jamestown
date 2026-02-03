@@ -6,13 +6,17 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     display: grid;
-    border-bottom: 1px dashed var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-top: none;
+    border-left: none;
+    border-radius: 0;
+    border-right: none;
     gap: 2rem;
     cursor: pointer;
 }
 
 .list_grid--item.rows:nth-child(1) {
-    border-top: 1px dashed var(--border-color);
+    border-top: 1px solid var(--border-color);
 }
 
 .list_grid--item.rows h3 {
@@ -27,6 +31,10 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0;
+}
+
+.list_grid--item.rows .img-wrapper {
+    border-radius: .3rem;
 }
 
 .list_grid--item.rows img {
@@ -49,7 +57,7 @@
     display: flex;
     align-items: center;
     border-radius: .3rem;
-    border: 1px dashed var(--border-color);
+    border: 1px solid var(--border-color);
     justify-content: center;
     background-color: transparent;
     color: var(--green);

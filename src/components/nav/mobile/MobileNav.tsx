@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useSession, signOut } from "next-auth/react"
 import { signIn } from "next-auth/react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { usePathname } from "next/navigation"
 import AccountMenuContent from "@/components/account/AccountMenu/AccountMenuContent"
 import "./MobileNav.css"
@@ -16,30 +16,26 @@ interface Props {
 export default function MobileNav({ open, onClose }: Props) {
   const { data: session } = useSession()
   const pathname = usePathname()
+  const prevPath = useRef(pathname)
   const [visible, setVisible] = useState(false)
 
-  // animate in AFTER mount
+  // animate in / out
   useEffect(() => {
-    if (!open) return
-
-    const id = requestAnimationFrame(() => {
-      setVisible(true)
-    })
-
-    return () => cancelAnimationFrame(id)
-  }, [open])
-
-  // animate out
-  useEffect(() => {
-    if (!open) {
+    if (open) {
+      const id = requestAnimationFrame(() => setVisible(true))
+      return () => cancelAnimationFrame(id)
+    } else {
       setVisible(false)
     }
   }, [open])
 
-  // close on route change
+  // close ONLY when the route actually changes
   useEffect(() => {
-    if (open) onClose()
-  }, [pathname])
+    if (open && prevPath.current !== pathname) {
+      onClose()
+    }
+    prevPath.current = pathname
+  }, [pathname, open, onClose])
 
   return (
     <div className={`mobile-nav-overlay ${visible ? "is-open" : ""}`}>
@@ -55,7 +51,8 @@ export default function MobileNav({ open, onClose }: Props) {
           {session?.user ? (
             <AccountMenuContent
               user={session.user}
-              onNavigate={onClose}
+              // navigation inside account menu should also wait for route change
+              onNavigate={() => {}}
               onLogout={() => signOut({ callbackUrl: "/" })}
             />
           ) : (

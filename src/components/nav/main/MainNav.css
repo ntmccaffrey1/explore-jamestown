@@ -1,0 +1,38 @@
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.main-nav {
+  gap: 1.75rem;
+  font-family: var(--font-alpina-typewriter);
+  font-weight: 600;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: inherit;
+  transition: .3s all;
+  padding: 2rem 0;
+  display: inline-flex;
+  position: relative;
+}
+
+.main-nav a:hover:before {
+  content: "";
+    background-color: var(--green);
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+}
+
+.main-nav a.nav-link.is-active:before {
+  content: "";
+    background-color: var(--green);
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+}

@@ -1,10 +1,6 @@
 import { prisma } from "@/lib/prisma"
 import { NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
-// import {
-//   eventUserCreateSchema,
-//   eventSystemCreateSchema,
-// } from "@/lib/validations/eventSchema"
 
 export async function GET(req: Request) {
   try {
@@ -81,52 +77,3 @@ export async function GET(req: Request) {
     )
   }
 }
-
-// export async function POST(req: Request) {
-//   try {
-//     const body = await req.json()
-//     const session = await auth()
-
-//     let data: any
-
-//     if (session?.user?.id) {
-
-//       const parsed = eventUserCreateSchema.safeParse(body)
-//       if (!parsed.success) {
-//         return NextResponse.json(
-//           { error: parsed.error.flatten().fieldErrors },
-//           { status: 400 }
-//         )
-//       }
-
-//       data = {
-//         ...parsed.data,
-//         submittedBy: session.user.id,
-//         approved: false,
-//       }
-//     } else {
-
-//       const parsed = eventSystemCreateSchema.safeParse(body)
-//       if (!parsed.success) {
-//         return NextResponse.json(
-//           { error: parsed.error.flatten().fieldErrors },
-//           { status: 400 }
-//         )
-//       }
-
-//       data = {
-//         ...parsed.data,
-//         approved: parsed.data.approved ?? true,
-//       }
-//     }
-
-//     const event = await prisma.event.create({ data })
-//     return NextResponse.json(event, { status: 201 })
-//   } catch (err) {
-//     console.error("POST /api/events error:", err)
-//     return NextResponse.json(
-//       { message: "Failed to create event" },
-//       { status: 500 }
-//     )
-//   }
-// }

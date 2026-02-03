@@ -33,14 +33,13 @@ export default function PlacesClient({
   isLoggedIn,
 }: PlacesClientProps) {
 
-  // 1️⃣ STATE
   const [places, setPlaces] = useState<PlaceUI[]>(initialPlaces)
+  const [sortedPlaces, setSortedPlaces] = useState<PlaceUI[]>(places)
   const [active, setActive] = useState<PlaceUI | null>(null)
   const [page, setPage] = useState(pagination.page)
   const [hasMore, setHasMore] = useState(pagination.page < pagination.pages)
   const [loading, setLoading] = useState(false)
 
-  // 2️⃣ HANDLERS
   async function loadMore() {
     if (loading || !hasMore) return
 
@@ -75,6 +74,14 @@ export default function PlacesClient({
     )
   }
 
+  useEffect(() => {
+    setSortedPlaces(
+      [...places].sort((a, b) =>
+        a.name.localeCompare(b.name)
+      )
+    )
+  }, [places])
+
   return (
     <div className="container">
       <div className="container-wrapper">
@@ -83,7 +90,7 @@ export default function PlacesClient({
       </h1>
 
       <GridList>
-        {places.map(p => (
+        {sortedPlaces.map(p => (
           <GridCard
             key={p.id}
             place={p}

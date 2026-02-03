@@ -87,12 +87,10 @@
     stroke-width: 1.5;
 }
 
-/* fade overlay in */
 .modal-overlay.open {
   background: rgba(0,0,0,0.5);
 }
 
-/* fade overlay out */
 .modal-overlay.closing {
   background: rgba(0,0,0,0);
 }
@@ -113,20 +111,18 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* slide in */
 .modal-body.open {
   transform: translateX(0);
   opacity: 1;
 }
 
-/* slide out */
 .modal-body.closing {
   transform: translateX(100%);
   opacity: 0;
 }
 
 .bottom-url {
-    border-top: 1px dashed var(--border-color);
+    border-top: 1px solid var(--border-color);
     background: #fff;
     width: 100%;
     padding: 1rem;

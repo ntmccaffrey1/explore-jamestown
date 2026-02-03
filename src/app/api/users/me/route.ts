@@ -24,8 +24,7 @@ export async function GET() {
         email: true,
         image: true,
         role: true,
-        favorites: true,      // optional: include user favorites
-        submissions: true,    // optional: show user-submitted events
+        favorites: true,
         createdAt: true,
       }
     })

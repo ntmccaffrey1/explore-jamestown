@@ -6,8 +6,6 @@ import { upsertPlace } from "@/lib/import-place"
 
 const SOURCES = [
   "https://www.discovernewport.org/things-to-do/?view=grid&sort=qualityScore&bounds=false&filter_regions%5B0%5D=41",
-
-  // Jamestown filtered categories (lots of recreational activities)
   "https://www.discovernewport.org/about-newport/nine-coastal-communities/jamestown/?view=grid&sort=qualityScore&bounds=false&filter_subcats%5B0%5D=465&filter_subcats%5B1%5D=469&filter_subcats%5B2%5D=472&filter_subcats%5B3%5D=467&filter_subcats%5B4%5D=577&filter_subcats%5B5%5D=466&filter_subcats%5B6%5D=470&filter_subcats%5B7%5D=471&filter_subcats%5B8%5D=488&filter_subcats%5B9%5D=468"
 ];
 

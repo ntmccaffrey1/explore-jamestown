@@ -20,6 +20,7 @@
 .profile-info .avatar {
     width: 5rem;
     height: 5rem;
+    pointer-events: none;
 }
 
 .profile-info .avatar img {
