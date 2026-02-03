@@ -34,7 +34,6 @@ export default function PlacesClient({
 }: PlacesClientProps) {
 
   const [places, setPlaces] = useState<PlaceUI[]>(initialPlaces)
-  const [sortedPlaces, setSortedPlaces] = useState<PlaceUI[]>(places)
   const [active, setActive] = useState<PlaceUI | null>(null)
   const [page, setPage] = useState(pagination.page)
   const [hasMore, setHasMore] = useState(pagination.page < pagination.pages)
@@ -74,14 +73,6 @@ export default function PlacesClient({
     )
   }
 
-  useEffect(() => {
-    setSortedPlaces(
-      [...places].sort((a, b) =>
-        a.name.localeCompare(b.name)
-      )
-    )
-  }, [places])
-
   return (
     <div className="container">
       <div className="container-wrapper">
@@ -90,7 +81,7 @@ export default function PlacesClient({
       </h1>
 
       <GridList>
-        {sortedPlaces.map(p => (
+        {places.map(p => (
           <GridCard
             key={p.id}
             place={p}

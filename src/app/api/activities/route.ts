@@ -21,7 +21,7 @@ export async function GET(request: Request) {
         where,
         skip,
         take: limit,
-        orderBy: { updatedAt: "desc" },
+        orderBy: { name: "asc" },
         select: {
           id: true,
           slug: true,
