@@ -19,6 +19,12 @@ type ScrapedEvent = {
 }
 
 export async function GET() {
+
+  // Disable scrape in prod
+  if (process.env.NODE_ENV === "production") {
+    return Response.json({ error: "Scraper disabled" }, { status: 404 })
+  }
+
   const baseURL =
     "https://www.discovernewport.org/events/?view=grid&sort=date&bounds=false"
 

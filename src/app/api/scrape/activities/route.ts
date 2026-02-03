@@ -10,6 +10,11 @@ const SOURCES = [
 ]
 
 export async function GET() {
+  // Disable scrape in prod
+  if (process.env.NODE_ENV === "production") {
+    return Response.json({ error: "Scraper disabled" }, { status: 404 })
+  }
+
   await runBrowser(async (browser) => {
     const lists = await Promise.all(
       SOURCES.map(src =>

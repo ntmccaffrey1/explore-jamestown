@@ -7,6 +7,11 @@ import { upsertPlace } from "@/lib/import-place"
 const BASE_URL = "https://www.discovernewport.org/about-newport/nine-coastal-communities/jamestown/?view=grid&sort=qualityScore&bounds=false&filter_subcats%5B0%5D=460&filter_subcats%5B1%5D=458&filter_subcats%5B2%5D=487&filter_subcats%5B3%5D=461"
 
 export async function GET() {
+  // Disable scrape in prod
+  if (process.env.NODE_ENV === "production") {
+    return Response.json({ error: "Scraper disabled" }, { status: 404 })
+  }
+
   await runBrowser(async (browser) => {
 
     const list = await scrapeList(browser, BASE_URL, "LODGING", "Jamestown");
