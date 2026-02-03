@@ -38,7 +38,7 @@ export default function EventsSwiperClient({
         observer
         observeParents
         breakpoints={{
-          0: { slidesPerView: 1.2 },
+          0: { slidesPerView: 1.05, spaceBetween: 12 },
           640: { slidesPerView: 2.2 },
           1024: { slidesPerView: 3 },
         }}
