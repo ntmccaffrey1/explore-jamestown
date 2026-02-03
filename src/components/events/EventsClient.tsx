@@ -17,7 +17,6 @@ interface Pagination {
 
 interface EventsClientProps {
   title: string
-  basePath: string
   endpoint: string
   events: EventUI[]
   pagination: Pagination
@@ -26,7 +25,6 @@ interface EventsClientProps {
 
 export default function EventsClient({
   title,
-  basePath,
   endpoint,
   events: initialEvents,
   pagination,

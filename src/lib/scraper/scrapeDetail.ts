@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { normalizeUrl } from "./normalizeUrl"
 
 export async function scrapeDetail(browser: any, url: string, opts?: { menu?: boolean }) {

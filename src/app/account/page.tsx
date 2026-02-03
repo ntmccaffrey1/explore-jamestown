@@ -21,7 +21,7 @@ export default async function AccountPage() {
   })
 
   const favoriteItems: FavoriteItemUI[] = favorites
-    .map((f: any) => {
+    .map((f) => {
       if (f.place) {
         return {
           type: "place",

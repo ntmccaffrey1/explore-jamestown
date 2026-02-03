@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma"
 import { NextResponse } from "next/server"
 import { auth } from "@/lib/auth"
+import type { Prisma } from "@prisma/client"
 
 export async function GET(req: Request) {
   try {
@@ -14,7 +15,7 @@ export async function GET(req: Request) {
     const startOfToday = new Date()
     startOfToday.setHours(0, 0, 0, 0)
 
-    const where: any = {
+    const where: Prisma.EventWhereInput = {
       approved: true,
       OR: [
         { endDate: { gte: startOfToday } },
@@ -52,10 +53,10 @@ export async function GET(req: Request) {
     ])
 
     const favoriteIds = new Set(
-      favorites.map((f: any) => f.eventId)
+      favorites.map((f) => f.eventId)
     )
 
-    const data = events.map((ev: any) => ({
+    const data = events.map((ev) => ({
       ...ev,
       isFavorited: favoriteIds.has(ev.id),
     }))

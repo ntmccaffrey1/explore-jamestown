@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export async function scrapeList(
   browser: any,
   baseUrl: string,

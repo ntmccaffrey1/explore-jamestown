@@ -1,6 +1,52 @@
 import { prisma } from "@/lib/prisma"
+import type { Event as PrismaEvent } from "@prisma/client"
 
-function mergeEvent(existing: any, incoming: any) {
+type ImportedEvent = {
+  recid?: number | null
+  title: string
+  description?: string | null
+  venue?: string | null
+  startDate: Date
+  endDate?: Date | null
+  url?: string | null
+  website?: string | null
+  price?: string | null
+  rawCategory?: string | null
+  category?: string | null
+  images?: string[]
+  sources?: string[]
+  source?: string
+  sourceType?: string
+  approved?: boolean
+}
+
+function normalizeEvent(event: PrismaEvent): ImportedEvent {
+  if (!event.startDate) {
+    throw new Error(`Event ${event.id} has no startDate`)
+  }
+
+  return {
+    recid: event.recid,
+    title: event.title,
+    description: event.description,
+    venue: event.venue,
+    startDate: event.startDate,
+    endDate: event.endDate,
+    url: event.url,
+    website: event.website,
+    price: event.price,
+    rawCategory: event.rawCategory,
+    category: event.category,
+    images: event.images ?? [],
+    sources: event.sources ?? [],
+    approved: event.approved,
+  }
+}
+
+function mergeEvent(
+  existing: ImportedEvent,
+  incoming: ImportedEvent
+) {
   return {
     recid:
       incoming.recid !== undefined
@@ -21,7 +67,6 @@ function mergeEvent(existing: any, incoming: any) {
         ? incoming.startDate
         : existing.startDate,
 
-    // allow null overwrite for endDate
     endDate:
       incoming.endDate !== undefined
         ? incoming.endDate
@@ -57,14 +102,12 @@ function mergeEvent(existing: any, incoming: any) {
       new Set([...(existing.sources ?? []), ...(incoming.sources ?? [])])
     ),
 
-    approved: existing.approved, // 🔒 never override manual approval
+    approved: existing.approved,
   }
 }
 
-/**
- * Create or update an event 
- */
-export async function upsertEvent(scraped: any) {
+// Create or update an event
+export async function upsertEvent(scraped: ImportedEvent) {
   if (!scraped?.title || !scraped?.startDate) {
     console.warn("Skipping invalid event:", scraped?.title)
     return null
@@ -80,13 +123,10 @@ export async function upsertEvent(scraped: any) {
     ? scraped.sources
     : [source]
 
-  let event = null
-
-  if (scraped.recid) {
-    event = await prisma.event.findFirst({
-      where: { recid: scraped.recid },
-    })
-  }
+  let event =
+    scraped.recid
+      ? await prisma.event.findFirst({ where: { recid: scraped.recid } })
+      : null
 
   if (!event) {
     event = await prisma.event.findFirst({
@@ -138,7 +178,7 @@ export async function upsertEvent(scraped: any) {
     })
   }
 
-  const merged = mergeEvent(event, scraped)
+  const merged = mergeEvent(normalizeEvent(event), scraped)
 
   return prisma.event.update({
     where: { id: event.id },

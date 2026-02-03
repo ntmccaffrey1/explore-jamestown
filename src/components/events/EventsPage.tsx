@@ -11,7 +11,6 @@ interface EventsPageProps {
 
 export default async function EventsPage({
   title,
-  basePath,
   endpoint,
   searchParams,
 }: EventsPageProps) {
@@ -49,7 +48,6 @@ const endpointWithParams = `${endpoint}?page=${apiPage}&limit=12`
   return (
     <EventsClient
       title={title}
-      basePath={basePath}
       endpoint={endpoint}
       events={events}
       pagination={pagination}

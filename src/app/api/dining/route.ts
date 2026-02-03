@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import { auth } from "@/lib/auth"
+import type { Prisma } from "@prisma/client"
 
 export async function GET(request: Request) {
   try {
@@ -12,7 +13,7 @@ export async function GET(request: Request) {
     const limit = Math.min(Number(searchParams.get("limit")) || 12, 50)
     const skip = (page - 1) * limit
 
-    const where: any = {
+    const where: Prisma.PlaceWhereInput = {
       type: "DINING",
     }
 
@@ -42,7 +43,7 @@ export async function GET(request: Request) {
       prisma.place.count({ where }),
     ])
 
-    let favoriteIds = new Set<string>()
+    const favoriteIds = new Set<string>()
 
     if (session?.user?.id) {
       const favorites = await prisma.favorite.findMany({
@@ -50,12 +51,12 @@ export async function GET(request: Request) {
         select: { placeId: true },
       })
 
-      favorites.forEach((f: any) => {
+      favorites.forEach((f) => {
         if (f.placeId) favoriteIds.add(f.placeId)
       })
     }
 
-    const data = dining.map((place: any) => ({
+    const data = dining.map((place) => ({
       ...place,
       isFavorited: favoriteIds.has(place.id),
     }))

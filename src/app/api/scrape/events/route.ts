@@ -2,6 +2,22 @@ import { chromium } from "playwright"
 import { upsertEvent } from "@/lib/import-event"
 import { normalizeCategory } from "@/lib/utils/normalizeCategory"
 
+type ScrapedEvent = {
+  recid: number | null
+  title: string | null
+  description: string | null
+  startDate: Date | null
+  endDate: Date | null
+  venue: string | null
+  images: string[]
+  url: string
+  website: string | null
+  rawCategory: string | null
+  category: string | null
+  price: string | null
+  sources: string[]
+}
+
 export async function GET() {
   const baseURL =
     "https://www.discovernewport.org/events/?view=grid&sort=date&bounds=false"
@@ -11,7 +27,7 @@ export async function GET() {
 
   let skip = 0
   const pageSize = 12
-  let allEvents: any[] = []
+  const allEvents: ScrapedEvent[] = []
 
   try {
     while (true) {
@@ -27,16 +43,12 @@ export async function GET() {
             const el = row as HTMLElement
 
             const recid = el.getAttribute("data-recid")
-
             const title =
               el.querySelector("h4 a")?.textContent?.trim() || null
-
             const url =
               el.querySelector("h4 a")?.getAttribute("href") || null
-
             const img =
               el.querySelector("img.thumb")?.getAttribute("src") || null
-
             const venue =
               el.querySelector(".locations a")?.textContent?.trim() || null
 
@@ -102,7 +114,7 @@ export async function GET() {
             document.querySelectorAll(".detail-gallery img")
           )
             .map(img => img.getAttribute("src"))
-            .filter(Boolean)
+            .filter(Boolean) as string[]
 
           return {
             title,
@@ -155,7 +167,13 @@ export async function GET() {
     console.log(`Scraped + kept: ${allEvents.length}`)
 
     for (const ev of allEvents) {
-      await upsertEvent(ev)
+      if (!ev.title || !ev.startDate) continue
+
+      await upsertEvent({
+        ...ev,
+        title: ev.title,
+        startDate: ev.startDate,
+      })
     }
 
     return Response.json({
@@ -173,7 +191,10 @@ export async function GET() {
   }
 }
 
-function parseEventDates(dateText?: string | null, timeText?: string | null) {
+function parseEventDates(
+  dateText?: string | null,
+  timeText?: string | null
+) {
   if (!dateText) return { startDate: null, endDate: null }
 
   const year = new Date().getFullYear()

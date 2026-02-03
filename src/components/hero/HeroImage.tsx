@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import "./HeroImage.css"
 
 export default function HeroImage({

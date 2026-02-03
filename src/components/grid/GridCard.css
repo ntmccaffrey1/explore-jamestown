@@ -129,7 +129,7 @@ p.address, p.telephone {
     text-align: center;
     z-index: 2;
     background: #fff;
-    font-size: .7rem;
+    font-size: .85rem;
     font-weight: 500;
     font-family: var(--font-alpina-typewriter);
     border-radius: .3rem;

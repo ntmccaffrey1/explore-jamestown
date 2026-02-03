@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import GridList from "@/components/grid/GridList"
 import GridCard from "@/components/grid/GridCard"
 import PlaceModal from "@/components/modals/PlaceModal"
@@ -17,7 +17,6 @@ interface Pagination {
 
 interface PlacesClientProps {
   title: string
-  basePath: string
   endpoint: string
   places: PlaceUI[]
   pagination: Pagination
@@ -26,7 +25,6 @@ interface PlacesClientProps {
 
 export default function PlacesClient({
   title,
-  basePath,
   endpoint,
   places: initialPlaces,
   pagination,
