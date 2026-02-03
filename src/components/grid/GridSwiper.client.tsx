@@ -37,13 +37,13 @@ export default function PlacesSwiperClient({
         observer
         observeParents
         breakpoints={{
-          0: { slidesPerView: 1.05, spaceBetween: 12 },
+          0: { slidesPerView: 1.05 },
           640: { slidesPerView: 2.2 },
           1024: { slidesPerView: 3 },
         }}
       >
         {places.map(place => (
-          <SwiperSlide key={place.id} style={{ width: "auto" }}>
+          <SwiperSlide key={place.id}>
             <GridCard
               place={place}
               isLoggedIn={isLoggedIn}
