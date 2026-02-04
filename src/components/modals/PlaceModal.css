@@ -135,7 +135,7 @@
   background: var(--background);
   width: 100%;
   max-width: 36rem;
-  height: 100svh;
+  height: 100dvh;
   position: fixed;
   right: 0;
   top: 0;
