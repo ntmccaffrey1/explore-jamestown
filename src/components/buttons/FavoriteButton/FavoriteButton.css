@@ -22,7 +22,7 @@
   display: block;
   fill: rgba(0,0,0,.2);
   stroke: #fff;
-  stroke-width: 3;
+  stroke-width: 2.5;
   overflow: visible;
   transition: fill 0.2s ease, stroke 0.2s ease;
 }

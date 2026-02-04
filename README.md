@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![logo](./public/favicon.png)
 
-## Getting Started
+# Explore Jamestown
 
-First, run the development server:
+Explore Jamestown is a modern web app for discovering lodging, dining, activities, and events in Jamestown, Rhode Island. It scrapes data from the Discover Newport website
+to create a curated view of everything to do and what is going on in Jamestown, Rhode Island.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The app is built with Next.js, Prisma, MongoDB, and built on a custom theme with scalable data modeling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Live site: https://explore-jamestown.com
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+Places: Dining, lodging and activities around Jamestown, RI
+Events: Events shows all events in Jamestown, RI and neighboring regions
+Favorites System: Logged in users can login and favorite any item on the site to their account page and build their own favorites list
+Responsive UI: Theme is custom built with CSS and fully responsive
+Authentication: GoogleAuth via NextAuth
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Frontend
+- Next.js (App Router)
+- React
+- TypeScript
+- Custom CSS theme
+- Swiper.js
 
-## Deploy on Vercel
+### Backend
+- Next.js API routes
+- Prisma
+- MongoDB
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Auth
+- NextAuth (Google OAuth)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Data
+- Scraped public events and places data from Discover Newport website
+- Normalized and stored in MongoDB
+- Duplicates are auto filtered
+
+
+## Roadmap
+
+- Add a filtering system
+- Integrate yelp reviews
+- Map based browsing
+- Find alternate data sourcing
+- Build admin UI for editing items
+- Allow logged in users ability to create their own events for admin approval
+
+
+## Disclaimer
+
+Explore Jamestown is an independent project and is not affiliated with the Town of Jamestown or any listed businesses. Event and place data is sourced from publicly available information and may change.    
+
+
+## Author
+
+Nolan McCaffrey
+Full Stack Web Developer
+https://nolanmccaffrey.com

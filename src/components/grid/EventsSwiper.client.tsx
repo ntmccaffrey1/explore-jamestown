@@ -44,7 +44,7 @@ export default function EventsSwiperClient({
         }}
       >
         {events.map(ev => (
-          <SwiperSlide key={ev.id} style={{ width: "auto" }}>
+          <SwiperSlide key={ev.id}>
             <EventGridCard
               event={ev}
               isLoggedIn={isLoggedIn}
