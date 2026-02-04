@@ -65,13 +65,14 @@
     background: #fff;
     border-bottom: 1px solid var(--border-color);
     z-index: 10;
+    padding: 0 .5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .modal-header .favorite-btn {
-  width: 3rem;
+  width: 2.5rem;
   height: 3rem;
   padding: 0;
   position: relative;
@@ -82,7 +83,6 @@
 .modal-header .favorite-btn svg {
     fill: none;
     stroke: var(--green);
-    stroke-width: 2px;
     width: 1.5rem;
     height: 1.5rem;
     transition: fill .2s, stroke .2s;
@@ -106,7 +106,7 @@
     border-radius: .3rem;
     justify-content: center;
     align-items: center;
-    width: 3rem;
+    width: 2.5rem;
     height: 3rem;
     padding: 0;
     transition: background .25s, color .25s;
@@ -135,7 +135,7 @@
   background: var(--background);
   width: 100%;
   max-width: 36rem;
-  height: 100vh;
+  height: 100svh;
   position: fixed;
   right: 0;
   top: 0;

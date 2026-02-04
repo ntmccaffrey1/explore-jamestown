@@ -36,6 +36,21 @@ export default function PlaceModal({
         >
           <BackIcon />
         </button>
+        <div className="modal-socials">
+            {place.socials &&
+              Object.entries(place.socials).map(([platform, url]) => {
+                if (!url) return null
+                if (!(platform in SOCIAL_ICONS)) return null
+
+                return (
+                  <SocialIcon
+                    key={platform}
+                    platform={platform as keyof typeof SOCIAL_ICONS}
+                    url={url}
+                  />
+                )
+              })}
+          
         <FavoriteButton
           placeId={place.id}
           title={place.name}
@@ -44,6 +59,7 @@ export default function PlaceModal({
           active={!!place.isFavorited}
           onToggle={(next) => onFavoriteToggle(place.id, next)}
         />
+        </div>
     </div>
     <div className="place-modal">
       <div className="modal-img--wrapper">
@@ -75,21 +91,6 @@ export default function PlaceModal({
                   Menu
                 </a>
             )}
-          </div>
-          <div className="modal-socials">
-            {place.socials &&
-              Object.entries(place.socials).map(([platform, url]) => {
-                if (!url) return null
-                if (!(platform in SOCIAL_ICONS)) return null
-
-                return (
-                  <SocialIcon
-                    key={platform}
-                    platform={platform as keyof typeof SOCIAL_ICONS}
-                    url={url}
-                  />
-                )
-              })}
           </div>
         </div>
 
