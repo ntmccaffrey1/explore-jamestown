@@ -113,6 +113,10 @@ header .logo {
   padding: 0 3rem;
 }
 
+.section {
+  overflow-x: hidden;
+}
+
 img {
   width: 100%;
 }

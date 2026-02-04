@@ -4,7 +4,7 @@
 import "./PlaceModal.css" // reuse styles
 import FavoriteButton from "../buttons/FavoriteButton/FavoriteButton"
 import type { EventUI } from "@/types/event"
-import { XIcon } from "../icons/XIcon/XIcon"
+import BackIcon from "../icons/BackIcon/BackIcon"
 
 interface EventModalProps {
   event: EventUI
@@ -32,7 +32,7 @@ export default function EventModal({
           aria-label="Close"
           onClick={onClose}
         >
-          <XIcon />
+          <BackIcon />
         </button>
         <FavoriteButton
             eventId={event.id}

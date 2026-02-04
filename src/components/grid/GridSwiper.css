@@ -13,7 +13,6 @@
 .swiper-slide {
   height: auto;
   display: flex;
-  width: 20rem !important;
 }
 
 .swiper .col-2 h3 {

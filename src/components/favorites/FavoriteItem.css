@@ -19,8 +19,12 @@
     border-top: 1px solid var(--border-color);
 }
 
-.list_grid--item.rows h3 {
+.list_grid--item.rows h4 {
   margin: 0 0 .3rem 0;
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .list_grid--item.rows p.description {
@@ -46,7 +50,7 @@
 
 .list_grid--item.rows img {
   border-radius: .3rem;
-  aspect-ratio: 2 / 1.35;
+  aspect-ratio: 2 / 1.5;
   object-position: center center;
   object-fit: cover;
 }
@@ -93,7 +97,7 @@
 @media screen and (max-width: 960px) {
     .list_grid--item.rows {
         grid-template-columns: .5fr 1.25fr .15fr;
-        gap: 1rem;
+        gap: 1.5rem;
         padding-top: .75rem;
         padding-bottom: .75rem;
     }

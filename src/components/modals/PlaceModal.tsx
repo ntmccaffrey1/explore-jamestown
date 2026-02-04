@@ -6,7 +6,7 @@ import FavoriteButton from "../buttons/FavoriteButton/FavoriteButton"
 import SocialIcon from "../socials/SocialIcons"
 import { SOCIAL_ICONS } from "../socials/SocialIcons"
 import type { PlaceUI } from "@/types/place"
-import { XIcon } from "../icons/XIcon/XIcon"
+import BackIcon from "../icons/BackIcon/BackIcon"
 
 
 interface PlaceModalProps {
@@ -27,16 +27,14 @@ export default function PlaceModal({
 
   return (
     <>
-    <div className="place-modal">
-
-      <div className="modal-img--wrapper">
-        <button
+    <div className="modal-header">
+      <button
           type="button"
           className="modal-close"
           aria-label="Close"
           onClick={onClose}
         >
-          <XIcon />
+          <BackIcon />
         </button>
         <FavoriteButton
           placeId={place.id}
@@ -46,6 +44,10 @@ export default function PlaceModal({
           active={!!place.isFavorited}
           onToggle={(next) => onFavoriteToggle(place.id, next)}
         />
+    </div>
+    <div className="place-modal">
+      <div className="modal-img--wrapper">
+        
         {place.image && <img src={place.image} alt={place.name} />}
       </div>
 

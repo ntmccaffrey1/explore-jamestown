@@ -35,10 +35,10 @@
 }
 
 .mobile-nav-menu a {
-    font-size: 1.5rem;
     color: var(--green);
+    font-size: 1.8rem;
+    font-family: var(--font-alpina-condensed);
     font-weight: 500;
-    letter-spacing: -.05rem;
 }
 
 .mobile-nav-panel {
