@@ -6,18 +6,20 @@ interface Props {
   title: string
   endpoint: string
   isLoggedIn: boolean
+  className?: string
 }
 
 export default async function PlacesSection({
   title,
   endpoint,
   isLoggedIn,
+  className
 }: Props) {
   const places = await fetchPlaces(endpoint)
   if (!places.length) return null
 
   return (
-    <SectionWrapper title={title}>
+    <SectionWrapper title={title} className={className}>
       <PlacesSwiperWrapper
         places={places}
         isLoggedIn={isLoggedIn}

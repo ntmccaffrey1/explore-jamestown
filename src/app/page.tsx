@@ -26,9 +26,9 @@ export default async function Home() {
       />
 
       <DiningSection isLoggedIn={isLoggedIn} />
+      <ActivitiesSection isLoggedIn={isLoggedIn} className="off-white" />
       <EventsSection />
-      <ActivitiesSection isLoggedIn={isLoggedIn} />
-      <LodgingSection isLoggedIn={isLoggedIn} />
+      <LodgingSection isLoggedIn={isLoggedIn} className="off-white" />
     </div>
   )
 }
