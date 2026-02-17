@@ -20,7 +20,7 @@ export default function AccountMenuContent({ user, onLogout, onNavigate }: Props
           <Avatar />
         </div>
         <div>
-          <div className="name">{user.name}</div>
+          <h4 className="name">{user.name}</h4>
           <div className="email">{user.email}</div>
         </div>
       </div>

@@ -1,11 +1,10 @@
-export function Logo(props:any) {
+export function Logo() {
   return (
   <svg className="logo"
       xmlns="http://www.w3.org/2000/svg"
       width={428}
       viewBox="0 0 321 161.25"
       height={215}
-      {...props}
     >
       <defs>
         <clipPath id="a">

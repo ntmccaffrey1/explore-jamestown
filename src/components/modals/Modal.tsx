@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useCallback } from "react"
 
 export default function Modal({
   children,
@@ -11,11 +11,12 @@ export default function Modal({
 }) {
   const [open, setOpen] = useState(false)
 
-  function requestClose() {
+  const requestClose = useCallback(() => {
     setOpen(false)
     setTimeout(onClose, 300)
-  }
+  }, [onClose])
 
+  // open on mount
   useEffect(() => {
     const id = requestAnimationFrame(() => {
       setOpen(true)
@@ -23,6 +24,7 @@ export default function Modal({
     return () => cancelAnimationFrame(id)
   }, [])
 
+  // lock body scroll
   useEffect(() => {
     const originalOverflow = document.body.style.overflow
     document.body.style.overflow = "hidden"
@@ -32,13 +34,14 @@ export default function Modal({
     }
   }, [])
 
+  // ESC key
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") requestClose()
     }
     window.addEventListener("keydown", handler)
     return () => window.removeEventListener("keydown", handler)
-  }, [])
+  }, [requestClose])
 
   return (
     <div

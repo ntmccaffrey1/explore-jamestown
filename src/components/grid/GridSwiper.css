@@ -1,6 +1,9 @@
 .swiper {
-    overflow: unset !important;
+    align-items: stretch;
     padding-top: 1rem;
+    overflow: visible !important;
+    min-width: 0;
+    display: flex !important;
 }
 
 .swiper {

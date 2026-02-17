@@ -1,7 +1,8 @@
 import "./GridList.css";
+import type { ReactNode } from "react"
 
 interface GridListProps {
-    children: any;
+  children: ReactNode
 }
 
 export default function GridList({ children }: GridListProps) {

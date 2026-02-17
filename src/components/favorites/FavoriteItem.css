@@ -6,17 +6,27 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     display: grid;
-    border-bottom: 1px dashed var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-top: none;
+    border-left: none;
+    border-radius: 0;
+    border-right: none;
     gap: 2rem;
     cursor: pointer;
 }
 
 .list_grid--item.rows:nth-child(1) {
-    border-top: 1px dashed var(--border-color);
+    border-top: 1px solid var(--border-color);
 }
 
-.list_grid--item.rows h3 {
+.list_grid--item.rows h4 {
   margin: 0 0 .3rem 0;
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
+    -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+display: -webkit-box;
+overflow: hidden;
 }
 
 .list_grid--item.rows p.description {
@@ -29,12 +39,28 @@
   margin: 0;
 }
 
+.list_grid--item.rows .img-wrapper {
+    border-radius: .3rem;
+    overflow: hidden;
+    overflow: hidden;
+    display: flex;
+}
+
+.list_grid--item.rows:hover .img-wrapper img {
+    transform: scale(1.1);
+}
+
 .list_grid--item.rows img {
   border-radius: .3rem;
-  aspect-ratio: 2 / 1.35;
+  aspect-ratio: 2 / 1.5;
   object-position: center center;
   object-fit: cover;
 }
+
+.list_grid--item.rows .img-wrapper img {
+  transform: scale(1);
+  transition: transform 0.4s ease-in-out;
+}  
 
 .list_grid--item.rows .col-3 {
   displaY: flex;
@@ -49,7 +75,7 @@
     display: flex;
     align-items: center;
     border-radius: .3rem;
-    border: 1px dashed var(--border-color);
+    border: 1px solid var(--border-color);
     justify-content: center;
     background-color: transparent;
     color: var(--green);
@@ -73,7 +99,7 @@
 @media screen and (max-width: 960px) {
     .list_grid--item.rows {
         grid-template-columns: .5fr 1.25fr .15fr;
-        gap: 1rem;
+        gap: 1.5rem;
         padding-top: .75rem;
         padding-bottom: .75rem;
     }

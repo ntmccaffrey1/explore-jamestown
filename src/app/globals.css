@@ -8,8 +8,8 @@
 
   --h1-font-size: clamp(3.3rem, 1rem + 6.15vw, 5rem);
 	--h2-font-size: clamp(2.65rem, 1rem + 3.2vw, 3.8rem);
-	--h3-font-size: clamp(1.8rem, 1rem + 1.5vw, 2.5rem);
-	--h4-font-size: clamp(1.2rem, 1rem + 1.2vw, 1.8rem);
+	--h3-font-size: clamp(2rem, 1rem + 1.5vw, 2.5rem);
+	--h4-font-size: clamp(1.75rem, 1rem + 1.2vw, 2rem);
 	--h5-font-size: clamp(1rem, 0.9rem + 0.9vw, 1.5rem);
 }
 
@@ -44,8 +44,11 @@ body {
   color: var(--green);
   font-family: var(--font-alpina-condensed), sans-serif;
   margin: 0;
-  overflow-x: hidden;
   font-size: 1rem;
+}
+
+.content {
+  overflow-x: hidden;
 }
 
 body.nav-open {
@@ -80,16 +83,18 @@ h4 {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.1;
 }
 
 p {
   font-family: var(--font-alpina-typewriter), sans-serif;
   line-height: 1.25;
+  letter-spacing: -.05rem;
 }
 
 ul {
   font-family: var(--font-alpina-typewriter), sans-serif;
+  letter-spacing: -.05rem;
 }
 
 a {
@@ -106,6 +111,10 @@ header .logo {
   width: 100%;
   margin: 0 auto;
   padding: 0 3rem;
+}
+
+.section {
+  overflow-x: hidden;
 }
 
 img {
@@ -138,7 +147,7 @@ button {
   height: 2.5rem;
   background: transparent;
   gap: .35rem;
-  border: 1px dashed var(--border-color);
+  border: 1px solid var(--border-color);
   align-items: center;
   border-radius: .3rem;
   padding-left: 1.5rem;
@@ -146,6 +155,7 @@ button {
   font-family: var(--font-alpina-typewriter);
   font-weight: 700;
   transition: .25s all;
+  letter-spacing: -.05rem;
 }
 
 .btn:hover {
@@ -182,6 +192,10 @@ button {
   position: fixed;
 }
 
+.off-white {
+  background: var(--off-white);
+}
+
 .container-wrapper {
   margin-top: clamp(7rem, 1rem + 10vw, 10rem);
   position: relative;
@@ -193,79 +207,6 @@ button {
     padding-right: 1.5rem;
   }
 }
-
-/* =============================
-   Navigation
-============================= */
-
-header {
-  width: 100%;
-  background: var(--background);
-  top: 0;
-  z-index: 102;
-  padding: .25rem 0;
-  border-bottom: 1px dashed var(--border-color);
-}
-
-header.nav-open {
-  z-index: 102;
-}
-
-.site-nav {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  position: relative;
-}
-
-.nav-left a {
-  display: flex;
-}
-
-.nav-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-header .container {
-  max-width: 100% !important;
-  position: relative;
-}
-
-.main-nav {
-  gap: .5rem;
-  font-family: var(--font-alpina-typewriter);
-  font-weight: 600;
-}
-
-@media screen and (max-width: 960px) {
-  .main-nav, .account-menu, .sign-in {
-    display: none;
-  }
-}
-
-.nav-right {
-  justify-content: flex-end;
-  display: flex;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: inherit;
-  transition: .3s all;
-  padding: .5rem 1rem;
-}
-
-.main-nav a.nav-link.is-active {
-  background: var(--off-white);
-  border-radius: .3rem;
-}
-
-.main-nav a:hover {
-  background: var(--off-white);
-  border-radius: .3rem;
-}  
 
 .container-wrapper h1 {
   text-align: center;

@@ -7,12 +7,15 @@ import Avatar from "@/components/avatar/Avatar"
 import AccountMenuContent from "./AccountMenuContent"
 import "./AccountMenu.css"
 
-export default function AccountMenu({ session }: { session: Session }) {
-  if (!session?.user) return null
-
+export default function AccountMenu({
+  session,
+}: {
+  session: Session | null
+}) {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
+  // click outside
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -23,6 +26,7 @@ export default function AccountMenu({ session }: { session: Session }) {
     return () => document.removeEventListener("mousedown", handleClick)
   }, [])
 
+  // ESC key
   useEffect(() => {
     function handleEsc(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false)
@@ -30,6 +34,8 @@ export default function AccountMenu({ session }: { session: Session }) {
     document.addEventListener("keydown", handleEsc)
     return () => document.removeEventListener("keydown", handleEsc)
   }, [])
+
+  if (!session?.user) return null
 
   return (
     <div className="account-menu" ref={ref}>
@@ -40,6 +46,7 @@ export default function AccountMenu({ session }: { session: Session }) {
           <AccountMenuContent
             user={session.user}
             onLogout={() => signOut()}
+            onNavigate={() => setOpen(false)}
           />
         </div>
       )}

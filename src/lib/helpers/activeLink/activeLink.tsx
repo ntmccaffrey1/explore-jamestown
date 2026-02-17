@@ -8,6 +8,7 @@ interface Props {
   children: React.ReactNode
   className?: string
   activeClassName?: string
+  onClick?: () => void
 }
 
 export default function ActiveLink({

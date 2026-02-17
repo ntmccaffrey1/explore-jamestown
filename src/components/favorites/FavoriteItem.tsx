@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import "./FavoriteItem.css"
@@ -47,7 +48,9 @@ export default function FavoriteItem({
     return (
         <div className="list_grid--item rows" onClick={onClick}>
             <div className="col-1">
-                {image && <img src={image} alt={title} />}
+                <div className="img-wrapper">
+                    {image && <img src={image} alt={title} />}
+                </div>
             </div>
 
             <div className="col-2">

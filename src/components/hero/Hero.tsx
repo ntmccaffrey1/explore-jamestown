@@ -1,5 +1,4 @@
 import HeroImage from "./HeroImage"
-import HeroBtn from "./HeroBtn"
 import "./Hero.css"
 
 interface HeroProps {
@@ -16,8 +15,6 @@ export default function Hero({
   description,
   imageSrc,
   imageAlt = "",
-  ctaLabel,
-  onCtaClick,
 }: HeroProps) {
   return (
     <section className="hero">
@@ -31,13 +28,7 @@ export default function Hero({
                 <p>{description}</p>
               )}
             </div>
-
-            {ctaLabel && (
-              <HeroBtn
-                label={ctaLabel}
-                onClick={onCtaClick}
-              />
-            )}
+            
           </div>
         </div>
       </div>

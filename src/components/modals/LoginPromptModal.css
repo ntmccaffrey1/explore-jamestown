@@ -13,7 +13,7 @@
   width: 20rem;
   padding: 1.5rem;
   border-radius: .75rem;
-  border: 1px dashed var(--green);
+  border: 1px solid var(--border-color);
   animation: modalIn 0.2s ease-out;
   text-align: center;
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import GridList from "@/components/grid/GridList"
 import GridCard from "@/components/grid/GridCard"
 import PlaceModal from "@/components/modals/PlaceModal"
@@ -17,7 +17,6 @@ interface Pagination {
 
 interface PlacesClientProps {
   title: string
-  basePath: string
   endpoint: string
   places: PlaceUI[]
   pagination: Pagination
@@ -26,21 +25,18 @@ interface PlacesClientProps {
 
 export default function PlacesClient({
   title,
-  basePath,
   endpoint,
   places: initialPlaces,
   pagination,
   isLoggedIn,
 }: PlacesClientProps) {
 
-  // 1️⃣ STATE
   const [places, setPlaces] = useState<PlaceUI[]>(initialPlaces)
   const [active, setActive] = useState<PlaceUI | null>(null)
   const [page, setPage] = useState(pagination.page)
   const [hasMore, setHasMore] = useState(pagination.page < pagination.pages)
   const [loading, setLoading] = useState(false)
 
-  // 2️⃣ HANDLERS
   async function loadMore() {
     if (loading || !hasMore) return
 

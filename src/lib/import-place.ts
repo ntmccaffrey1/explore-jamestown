@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { prisma } from "@/lib/prisma"
 import slugify from "slugify"
 
@@ -17,11 +19,7 @@ function normalize(value: any): any {
 
   if (Array.isArray(value)) {
     return Array.from(
-      new Set(
-        value
-          .map(v => normalize(v))
-          .filter(Boolean)
-      )
+      new Set(value.map(v => normalize(v)).filter(Boolean))
     )
   }
 
@@ -37,7 +35,7 @@ function normalize(value: any): any {
   return value
 }
 
-// manual db edits wins
+// manual DB edits win
 function mergeField(db: any, scr: any) {
   db = normalize(db)
   scr = normalize(scr)
@@ -48,15 +46,16 @@ function mergeField(db: any, scr: any) {
 
 function merge(existing: any, scraped: any) {
   return {
-    name:        mergeField(existing.name, scraped.name),
-    type:        mergeField(existing.type, scraped.type),
-    address:     mergeField(existing.address, scraped.address),
-    phone:       mergeField(existing.phone, scraped.phone),
-    email:       mergeField(existing.email, scraped.email),
-    website:     mergeField(existing.website, scraped.website),
-    menu:        mergeField(existing.menu, scraped.menu),
-    url:         mergeField(existing.url, scraped.url),
-    city:        mergeField(existing.city, scraped.city),
+    name: existing.name,
+    type: existing.type,
+
+    address: mergeField(existing.address, scraped.address),
+    phone: mergeField(existing.phone, scraped.phone),
+    email: mergeField(existing.email, scraped.email),
+    website: mergeField(existing.website, scraped.website),
+    menu: mergeField(existing.menu, scraped.menu),
+    url: mergeField(existing.url, scraped.url),
+    city: mergeField(existing.city, scraped.city),
     description: mergeField(existing.description, scraped.description),
 
     image: mergeField(existing.image, scraped.image),
@@ -82,16 +81,23 @@ function merge(existing: any, scraped: any) {
 }
 
 export async function upsertPlace(scraped: any) {
+  if (!scraped?.name || !scraped?.type) {
+    console.warn("Skipping invalid place:", scraped)
+    return null
+  }
+
   const existing = await prisma.place.findFirst({
-    where: { name: scraped.name, city: scraped.city }
+    where: { name: scraped.name, city: scraped.city },
   })
 
   if (!existing) {
     return prisma.place.create({
       data: {
         ...normalize(scraped),
+        name: scraped.name,
+        type: scraped.type,
         slug: makeSlug(scraped.name),
-      }
+      },
     })
   }
 
@@ -102,6 +108,6 @@ export async function upsertPlace(scraped: any) {
     data: {
       ...merged,
       slug: existing.slug ?? makeSlug(scraped.name),
-    }
+    },
   })
 }

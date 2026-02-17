@@ -31,19 +31,19 @@ export default function PlacesSwiperClient({
   return (
     <>
       <Swiper
-        spaceBetween={32}
+        spaceBetween={24}
         slidesPerView="auto"
         grabCursor
         observer
         observeParents
         breakpoints={{
-          0: { slidesPerView: 1.2 },
+          0: { slidesPerView: 1.05 },
           640: { slidesPerView: 2.2 },
           1024: { slidesPerView: 3 },
         }}
       >
         {places.map(place => (
-          <SwiperSlide key={place.id} style={{ width: "auto" }}>
+          <SwiperSlide key={place.id}>
             <GridCard
               place={place}
               isLoggedIn={isLoggedIn}
@@ -60,8 +60,8 @@ export default function PlacesSwiperClient({
             <PlaceModal
               place={active}
               isLoggedIn={isLoggedIn}
-              onClose={requestClose}          // ✅ animated close
-              onFavoriteToggle={handleFavorite} // ✅ correct fn
+              onClose={requestClose}
+              onFavoriteToggle={handleFavorite}
             />
           )}
         </Modal>

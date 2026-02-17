@@ -1,5 +1,4 @@
 .modal-socials {
-    gap: .5rem;
     display: flex;
 }
 
@@ -7,26 +6,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: .35rem;
-  border: 1px dashed var(--border-color);
-  border-radius: .3rem;
   color: var(--green);
   width: 2.5rem;
-height: 2.5rem;
-  transition: background 0.25s ease, color 0.25s ease;
+  height: 3rem;
 }
 
 .social-icon svg {
     width: 1.5rem;
     height: 1.5rem;
-}
-
-.social-icon svg * {
-  fill: currentColor;
-  stroke: currentColor;
-}
-
-.social-icon:hover {
-  background: var(--green);
-  color: #fff;
 }

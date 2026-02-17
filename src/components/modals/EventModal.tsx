@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import "./PlaceModal.css" // reuse styles
 import FavoriteButton from "../buttons/FavoriteButton/FavoriteButton"
 import type { EventUI } from "@/types/event"
-import { XIcon } from "../icons/XIcon/XIcon"
+import BackIcon from "../icons/BackIcon/BackIcon"
 
 interface EventModalProps {
   event: EventUI
@@ -23,17 +24,16 @@ export default function EventModal({
 
   return (
     <>
-    <div className="place-modal">
-      <div className="modal-img--wrapper">
+      <div className="modal-header">
         <button
-          type="button"
-          className="modal-close"
-          aria-label="Close"
-          onClick={onClose}
-        >
-          <XIcon />
-        </button>
-        <FavoriteButton
+            type="button"
+            className="modal-close"
+            aria-label="Close"
+            onClick={onClose}
+          >
+            <BackIcon />
+          </button>
+          <FavoriteButton
             eventId={event.id}
             title={event.title}
             image={image}
@@ -41,35 +41,37 @@ export default function EventModal({
             active={!!event.isFavorited}
             onToggle={(next) => onFavoriteToggle(event.id, next)}
         />
+        </div>
+        <div className="place-modal">
+          <div className="modal-img--wrapper">
+            {image && <img src={image} alt={event.title} />}
+          </div>
 
-        {image && <img src={image} alt={event.title} />}
-      </div>
+          <div className="modal-content--wrapper">
+            <h3>{event.title}</h3>
 
-      <div className="modal-content--wrapper">
-        <h3>{event.title}</h3>
+            {event.startDate && (
+              <p>
+                {new Date(event.startDate).toLocaleString("en-US", {
+                  weekday: "long",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "2-digit",
+                })}
+              </p>
+            )}
 
-        {event.startDate && (
-          <p>
-            {new Date(event.startDate).toLocaleString("en-US", {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-              hour: "numeric",
-              minute: "2-digit",
-            })}
-          </p>
-        )}
+            {event.venue && <p>{event.venue}</p>}
 
-        {event.venue && <p>{event.venue}</p>}
-
-        {event.description && (
-            <div
-                className="event-description"
-                dangerouslySetInnerHTML={{ __html: event.description }}
-            />
-        )}
-      </div>
-    </div>
+            {event.description && (
+                <div
+                    className="event-description"
+                    dangerouslySetInnerHTML={{ __html: event.description }}
+                />
+            )}
+          </div>
+        </div>
     <div className="bottom-url">
           {event.url && (
               <a

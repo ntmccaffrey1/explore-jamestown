@@ -10,7 +10,7 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  border: 1px dashed var(--border-color);
+  border: 1px solid var(--border-color);
   display: flex;
   gap: 1rem;
   align-items: center;

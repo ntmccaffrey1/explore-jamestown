@@ -2,7 +2,6 @@
 
 import { useEffect } from "react"
 import { createPortal } from "react-dom"
-import { useRouter } from "next/navigation"
 import { signIn } from "next-auth/react"
 import "./LoginPromptModal.css"
 
@@ -13,7 +12,6 @@ export default function LoginPromptModal({
   open: boolean
   onClose: () => void
 }) {
-  const router = useRouter()
 
   // Prevent background scroll
   useEffect(() => {

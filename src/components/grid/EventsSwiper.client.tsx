@@ -32,19 +32,19 @@ export default function EventsSwiperClient({
   return (
     <>
       <Swiper
-        spaceBetween={32}
+        spaceBetween={24}
         slidesPerView="auto"
         grabCursor
         observer
         observeParents
         breakpoints={{
-          0: { slidesPerView: 1.2 },
+          0: { slidesPerView: 1.05 },
           640: { slidesPerView: 2.2 },
           1024: { slidesPerView: 3 },
         }}
       >
         {events.map(ev => (
-          <SwiperSlide key={ev.id} style={{ width: "auto" }}>
+          <SwiperSlide key={ev.id}>
             <EventGridCard
               event={ev}
               isLoggedIn={isLoggedIn}
@@ -57,12 +57,14 @@ export default function EventsSwiperClient({
 
       {active && (
         <Modal onClose={() => setActive(null)}>
-          <EventModal
-            event={active}
-            isLoggedIn={isLoggedIn}
-            onClose={() => setActive(null)}
-            onFavoriteToggle={handleFavorite}
-          />
+          {(requestClose) => (
+            <EventModal
+              event={active}
+              isLoggedIn={isLoggedIn}
+              onClose={requestClose}
+              onFavoriteToggle={handleFavorite}
+            />
+          )}
         </Modal>
       )}
     </>

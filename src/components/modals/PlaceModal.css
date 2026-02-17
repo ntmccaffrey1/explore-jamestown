@@ -58,41 +58,75 @@
     padding: 0 1rem;
 }
 
-.modal-close {
-  position: absolute;
-  top: .25rem;
-  right: .25rem;
+.modal-header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 10;
+    padding: 0 .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.modal-header .favorite-btn {
+  width: 2.5rem;
+  height: 3rem;
   padding: 0;
-  z-index: 10;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: .3rem;
-  color: #fff;
-  width: 1.75rem;
-  height: 1.75rem;
-  transition: background 0.25s ease, color 0.25s ease;
+  position: relative;
+  top: 0;
+  right: 0;
+}  
+
+.modal-header .favorite-btn svg {
+    fill: none;
+    stroke: var(--green);
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: fill .2s, stroke .2s;
+    display: block;
+    overflow: visible;
+}
+
+.modal-header .favorite-btn.is-active svg {
+    fill: var(--green);
+}
+
+.modal-header .favorite-btn:hover {
+    transform: scale(1);
+}
+
+.modal-close {
+    z-index: 10;
+    color: var(--green);
+    background: none;
+    border: none;
+    border-radius: .3rem;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 3rem;
+    padding: 0;
+    transition: background .25s, color .25s;
+    display: inline-flex;
 }
 
 .modal-close svg {
-    width: 2rem;
-    height: 2rem;
+    width: 2.25rem;
+    height: 2.25rem;
 }
 
 .modal-close svg * {
-    fill: currentcolor;
     stroke: currentcolor;
     stroke-width: 1.5;
 }
 
-/* fade overlay in */
 .modal-overlay.open {
   background: rgba(0,0,0,0.5);
 }
 
-/* fade overlay out */
 .modal-overlay.closing {
   background: rgba(0,0,0,0);
 }
@@ -101,7 +135,7 @@
   background: var(--background);
   width: 100%;
   max-width: 36rem;
-  height: 100vh;
+  height: 100dvh;
   position: fixed;
   right: 0;
   top: 0;
@@ -113,20 +147,18 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* slide in */
 .modal-body.open {
   transform: translateX(0);
   opacity: 1;
 }
 
-/* slide out */
 .modal-body.closing {
   transform: translateX(100%);
   opacity: 0;
 }
 
 .bottom-url {
-    border-top: 1px dashed var(--border-color);
+    border-top: 1px solid var(--border-color);
     background: #fff;
     width: 100%;
     padding: 1rem;

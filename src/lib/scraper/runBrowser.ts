@@ -1,7 +1,7 @@
-import { chromium } from "playwright"
+import { chromium, type Browser } from "playwright"
 
 export async function runBrowser(
-  fn: (browser: any) => Promise<void>
+  fn: (browser: Browser) => Promise<void>
 ) {
   const browser = await chromium.launch({ headless: true })
 

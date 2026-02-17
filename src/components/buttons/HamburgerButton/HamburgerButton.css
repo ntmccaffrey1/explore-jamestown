@@ -1,7 +1,7 @@
 .hamburger {
-    border: 1px dashed var(--border-color);
-    background: none;
+    background: transparent;
     border-radius: .3rem;
+    border: 1px solid var(--border-color);
     flex-direction: column;
     width: 2.5rem;
     justify-content: center;
@@ -14,7 +14,7 @@
 .hamburger span {
   height: 1px;
   width: 85%;
-  background: currentColor;
+  background: var(--green);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 

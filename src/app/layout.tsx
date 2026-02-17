@@ -1,8 +1,17 @@
 import "./globals.css";
-import Nav from "@/components/nav/Nav";
+import Header from "@/components/header/Header"
+import MobileNavProvider from "@/components/nav/mobile/MobileNavClient"
+import MobileNavWrapper from "@/components/nav/mobile/MobileNavWrapper"
 import localFont from "next/font/local";
 import Providers from "@/components/Providers";
 import Footer from "@/components/footer/Footer";
+
+export const metadata = {
+  title: "Explore Jamestown",
+  icons: {
+    icon: "/favicon.png",
+  },
+}
 
 export const alpinaCondensed = localFont({
   src: [
@@ -46,7 +55,7 @@ export default function RootLayout({
   modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
+  modal?: React.ReactNode;
 }) {
   return (
     <html
@@ -55,7 +64,9 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <Nav />
+        <MobileNavProvider>
+          <Header />
+          <MobileNavWrapper />
 
           <main className="content">
             {children}
@@ -64,6 +75,7 @@ export default function RootLayout({
           {modal}
 
           <Footer />
+        </MobileNavProvider>
         </Providers>
       </body>
     </html>

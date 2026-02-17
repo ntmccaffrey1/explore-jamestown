@@ -11,7 +11,6 @@ interface PlacesPageProps {
 
 export default async function PlacesPage({
   title,
-  basePath,
   endpoint,
   searchParams,
 }: PlacesPageProps) {
@@ -48,7 +47,6 @@ export default async function PlacesPage({
   return (
     <PlacesClient
       title={title}
-      basePath={basePath}
       endpoint={endpoint}
       places={places}
       pagination={pagination}
